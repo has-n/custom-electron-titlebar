@@ -61,7 +61,7 @@ Update the code that launches browser window
 Add the following line to your `main.js` file:
 
 ```js
-require('@treverix/remote/main').initialize()
+require('@electron/remote/main').initialize()
 ```
 
 Then configure the browser window like this. We need
@@ -79,6 +79,12 @@ var mainWindow = new BrowserWindow({
           preload: path.join(__dirname, 'preload.js'),
       }
 });
+```
+
+Then enable the mainWindow to use the `@electron/remote` pacakge:
+
+```js
+require("@electron/remote/main").enable(mainWindow.webContents)
 ```
 
 #### MacOS / Windows
